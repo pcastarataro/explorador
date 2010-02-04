@@ -1,5 +1,7 @@
 package Tablero;
 
+import java.util.ArrayList;
+
 import Commons.Punto;
 
 
@@ -36,5 +38,21 @@ public abstract class Celda {
 	public void setEstado(EstadoCelda estado) {
 		this.estado= estado;
 		
+	}
+
+	protected ArrayList<Punto> getPosicionesAdyacentes() {
+		ArrayList<Punto> list= new ArrayList<Punto>();
+		Punto posicionActual= this.getPosicion();
+	    int currentX = posicionActual.getPosicionX();
+	    int currentY = posicionActual.getPosicionY();
+	    int fromX = -1 + currentX;
+	    int toX = 1 + currentX;
+	    int fromY= -1 + currentY;
+	    int toY= 1+ currentY;
+		for (int i= fromX; i<= toX; i++)
+			for (int j= fromY; j<= toY; j++){
+			    list.add(new Punto(i,j));
+		}
+		return list;
 	}
 }

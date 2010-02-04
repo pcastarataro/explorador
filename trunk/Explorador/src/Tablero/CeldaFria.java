@@ -23,28 +23,28 @@ public class CeldaFria extends Celda{
 	}
 	
 	 private int distanciaALaBombaMasCercana() {
-		int level=0;
-		boolean founded=false;
+		int nivel=1;
+		boolean encontrado=false;
 		boolean aux;
-		int height= Juego.getInstancia().getTablero().getRepresentacion().getAlto();
-		int weight= Juego.getInstancia().getTablero().getRepresentacion().getAncho();
-		while ((!founded) && (level < height) && (level <weight))
+		int alto= Juego.getInstancia().getTablero().getRepresentacion().getAlto();
+		int ancho= Juego.getInstancia().getTablero().getRepresentacion().getAncho();
+		while ((!encontrado) && (nivel <= alto) && (nivel <= ancho))
 		{
-		       	for (int i= getPosicion().getPosicionX()+ level ; i < getPosicion().getPosicionX()+level; i++)
-		       		for (int j= getPosicion().getPosicionX()+ level ; j < getPosicion().getPosicionX()+level; j++)
+		       	for (int i= getPosicion().getPosicionX()- nivel ; i <= getPosicion().getPosicionX()+nivel; i++)
+		       		for (int j= getPosicion().getPosicionY()- nivel ; j <= getPosicion().getPosicionY()+nivel; j++)
 		       	{
-		       		if (!founded)
+		       		if (!encontrado)
 		       		{
 		       			aux= false;
 		       			try{
 		       				aux= (Juego.getInstancia().getTablero().getRepresentacion().getPosicion(i,j)instanceof CeldaBomba);
 		       			}catch (FueraDeRangoException e){}
-		       			founded= (founded || aux);
+		       			encontrado= (encontrado || aux);
 		       		}
 		       	}
-		level++;
+		nivel++;
 		}
-		return level-1;
+		return nivel-1;
 	}
 
 }

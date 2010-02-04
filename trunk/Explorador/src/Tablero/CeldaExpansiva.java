@@ -31,20 +31,4 @@ public class CeldaExpansiva extends Celda{
 		return 0;
 	}
 
-	private ArrayList<Punto> getPosicionesAdyacentes() {
-		ArrayList<Punto> list= new ArrayList<Punto>();
-		Punto posicionActual= super.getPosicion();
-        int currentX = posicionActual.getPosicionX();
-        int currentY = posicionActual.getPosicionY();
-        int fromX = -1 + currentX;
-        int toX = 1 + currentX;
-        int fromY= -1 + currentY;
-        int toY= 1+ currentY;
-		for (int i= fromX; i<= toX; i++)
-			for (int j= fromY; j<= toY; j++){
-			    list.add(new Punto(i,j));
-		}
-		return list;
-	}
-
 }

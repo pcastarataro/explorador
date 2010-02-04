@@ -14,7 +14,6 @@ public class Juego {
 		return instance;
 	}
 	
-	//private int vidasRestantes;
 	private Tablero tablero;
 	private EstadoJuego estadoJuego;
 	private int bombasExplotadas;
@@ -22,7 +21,7 @@ public class Juego {
 	
 	public Juego()
 	{
-		iniciar();
+		this.iniciar();
 	}
 	
 	private void SeleccionarTablero(String path) throws FileNotFoundException, IllegalArgumentException, IOException, ClassNotFoundException
@@ -32,20 +31,20 @@ public class Juego {
 	
 	public void incrementarEncontrados()
 	{
-		this.estrellasEncontradas= estrellasEncontradas++;
-		if (estrellasEncontradas == tablero.getCantidadEstrellas())
+		this.estrellasEncontradas++;
+		if (this.estrellasEncontradas == this.tablero.getCantidadEstrellas())
 		{
-			estadoJuego= EstadoJuego.GANADO;
+			this.estadoJuego= EstadoJuego.GANADO;
 		}
 	}
 	
 	public void incrementarExplotados()
 	{
-		this.bombasExplotadas= bombasExplotadas++;
-		if (bombasExplotadas == tablero.getCantidadBombas())
+		this.bombasExplotadas++;
+		if (this.bombasExplotadas == this.tablero.getCantidadBombas())
 		{
-			estadoJuego= EstadoJuego.PERDIDO;
-			//this.vidasRestantes--;
+			this.estadoJuego= EstadoJuego.PERDIDO;
+			
 		}
 	}
 	
@@ -69,24 +68,19 @@ public class Juego {
 	}
 
 	public void iniciar() {
-		// TODO Auto-generated method stub
 		estadoJuego= EstadoJuego.JUGANDO;
-		//vidasRestantes=2;
+		
 		try {
 			SeleccionarTablero("./recursos/tableros/1.txt");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}//See path
+		}
 		this.bombasExplotadas=0;
 		this.estrellasEncontradas=0;
 	}
