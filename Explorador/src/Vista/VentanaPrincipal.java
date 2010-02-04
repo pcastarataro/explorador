@@ -45,21 +45,21 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		alto= tablero.getRepresentacion().getAlto();
 		botones= new JButton [ancho][alto];
 		
-		JPanel panelMedio=new JPanel(new GridLayout(ancho,alto));
+		JPanel panelMedio=new JPanel(new GridLayout(alto,ancho));
 		//	Crear y colocar botones
-		for(int i=0;i<ancho;i++)
-			for(int j=0;j<alto;j++)
+		for(int i=0;i<alto;i++)
+			for(int j=0;j<ancho;j++)
 				{
 					//	Crear boton
-					botones [i][j]=new JButton();
+					botones [j][i]=new JButton();
 					//	Colocar en el panel
-					panelMedio.add(botones[i][j]);
+					panelMedio.add(botones[j][i]);
 					//	Action Listener
-					botones[i][j].addActionListener(this);
+					botones[j][i].addActionListener(this);
 				}
 		this.add(panelMedio,"Center");	
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(500,500);
+		this.setSize(500,600);
 		this.setTitle("|  Explorador  |");
 		
 		MenuItem juegoNuevo= new MenuItem("Juego Nuevo", new MenuShortcut(KeyEvent.VK_J));
@@ -68,6 +68,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Juego.getInstancia().iniciar();
+				redibujar();
 			}
 		});
 

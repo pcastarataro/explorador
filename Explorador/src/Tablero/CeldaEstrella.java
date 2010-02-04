@@ -1,5 +1,7 @@
 package Tablero;
 
+import Juego.Juego;
+
 
 public class CeldaEstrella extends Celda{
 
@@ -13,6 +15,7 @@ public class CeldaEstrella extends Celda{
 	public int darVuelta() {
 		if (getEstado()== EstadoCelda.TAPADO){
 			this.setEstado(EstadoCelda.ENCONTRADO);
+			Juego.getInstancia().incrementarEncontrados();
 		}
 		return 0;
 	}

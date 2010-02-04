@@ -6,31 +6,31 @@ import Commons.Matriz;
 public class Tablero {
 
 	public int getCantidadEstrellas() {
-		int starsAmount=0;
+		int cantidadEstrellas=0;
 		Matriz matriz= this.getRepresentacion();
 		for (int i=0; i<matriz.getAncho(); i++)
 			for (int j=0; j<matriz.getAlto(); j++)
 		{
 			if ((matriz.getPosicion(i,j)) instanceof CeldaEstrella)
 			{
-				starsAmount++;
+				cantidadEstrellas++;
 			}
 		}
-		return starsAmount;
+		return cantidadEstrellas;
 	}
 
 	public int getCantidadBombas() {
-		int bombsAmount=0;
+		int cantidadBombas=0;
 		Matriz matriz= this.getRepresentacion();
 		for (int i=0; i<matriz.getAncho(); i++)
 			for (int j=0; j<matriz.getAlto(); j++)
 		{
 			if ((matriz.getPosicion(i,j)) instanceof CeldaBomba)
 			{
-				bombsAmount++;
+				cantidadBombas++;
 			}
 		}
-		return bombsAmount;
+		return cantidadBombas;
 	}
 	
 	private Matriz tablero;
