@@ -34,30 +34,24 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	private int ancho;
 	private int alto;
 	private JButton[][] botones;
-	
+	private JPanel panelMedio;
+	private GridLayout ubicacion;
 	/**
 	 * @param args
 	 */
 	public VentanaPrincipal(){
-		
+		ImageIcon imagenIcono=new ImageIcon("recursos/imagenes/IconoPrincipal.png"); 
+		this.setIconImage(imagenIcono.getImage());
 		Tablero tablero= Juego.getInstancia().getTablero();
 		ancho= tablero.getRepresentacion().getAncho();
 		alto= tablero.getRepresentacion().getAlto();
 		botones= new JButton [ancho][alto];
-		
-		JPanel panelMedio=new JPanel(new GridLayout(alto,ancho));
+		ubicacion= new GridLayout(alto,ancho);
+		panelMedio=new JPanel(ubicacion);
 		//	Crear y colocar botones
-		for(int i=0;i<alto;i++)
-			for(int j=0;j<ancho;j++)
-				{
-					//	Crear boton
-					botones [j][i]=new JButton();
-					//	Colocar en el panel
-					panelMedio.add(botones[j][i]);
-					//	Action Listener
-					botones[j][i].addActionListener(this);
-				}
-		this.add(panelMedio,"Center");	
+		llenarBotones(panelMedio);
+		this.add(panelMedio,"Center");
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(500,600);
 		this.setTitle("|  Explorador  |");
@@ -68,7 +62,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Juego.getInstancia().iniciar();
-				redibujar();
+				dispose();
+				VentanaPrincipal nuevaVentana= new VentanaPrincipal();
+				nuevaVentana.setVisible(true);
+				
 			}
 		});
 
@@ -114,10 +111,24 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 
 		MenuBar barraDeMenu= new MenuBar();
 		barraDeMenu.add(juego);
-		barraDeMenu.add(ayuda);
+		//barraDeMenu.add(ayuda);
 		
 
 		this.setMenuBar(barraDeMenu);
+	}
+
+	private void llenarBotones(JPanel panelMedio) {
+		panelMedio.removeAll();
+		for(int i=0;i<alto;i++)
+			for(int j=0;j<ancho;j++)
+				{
+					//	Crear boton
+					botones [j][i]=new JButton();
+					//	Colocar en el panel
+					panelMedio.add(botones[j][i]);
+					//	Action Listener
+					botones[j][i].addActionListener(this);
+				}
 	}	
 
 	@Override
@@ -173,6 +184,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 							}
 						}
 					}
+				}else {
+					botones[i][j].setBackground(null);
+					botones[i][j].setText("");
+					botones[i][j].setIcon(null);
 				}
 			}
 		
