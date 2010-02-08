@@ -1,0 +1,6 @@
+./recursos/tableros/1.txt;
+./recursos/tableros/2.txt;
+./recursos/tableros/3.txt;
+./recursos/tableros/4.txt;
+./recursos/tableros/5.txt;
+./recursos/tableros/6.txt;

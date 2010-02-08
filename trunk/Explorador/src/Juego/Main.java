@@ -13,20 +13,26 @@ public class Main {
 	public static void main(String[] args) {	
 		VentanaPrincipal v= new VentanaPrincipal();
 		v.setVisible(true);
-		while ((!Juego.getInstancia().estaGanado())&&(!Juego.getInstancia().estaPerdido())){
-			System.out.println("Jugando");
-		}	
-		if (Juego.getInstancia().estaPerdido()){
-			System.out.println("Perdido");
-			VentanaPerdedor ventana= new VentanaPerdedor();
-			ventana.setVisible(true);
-		}else
-		if (Juego.getInstancia().estaGanado()){
-			System.out.println("Ganado");
-			VentanaGanador ventana= new VentanaGanador();
-			ventana.setVisible(true);
+		while(true){
+			while ((!Juego.getInstancia().estaGanado())&&(!Juego.getInstancia().estaPerdido())){
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				if (Juego.getInstancia().estaPerdido()){
+					VentanaPerdedor ventana= new VentanaPerdedor();
+					ventana.setVisible(true);
+				}else if (Juego.getInstancia().estaGanado()){
+					VentanaGanador ventana= new VentanaGanador();
+					ventana.setVisible(true);
+				}
+				
+				
+			}
 		}
 	}
-
-
+	
 }
+
+

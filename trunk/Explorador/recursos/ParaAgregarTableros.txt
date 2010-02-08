@@ -1,0 +1,21 @@
+Para agregar tableros se deben seguir los siguientes pasos:
+
+1- Creacion:
+	Para crear un tablero se deben seguir las siguientes reglas:
+	 a- Crear un archivo de texto que contenga letras de este tipo para representar las distintas
+	 	celdas
+	 	
+	 	'S' : Celda Estrella
+	 	'C' : Celda Fria
+	 	'H' : Celda Caliente
+	 	'E' : Celda Expansiva
+	 	'B' : Celda Bomba
+	 	--------------------------------------------------
+	 	- Pueden agregarse mas en el parser en un futuro -
+	 	--------------------------------------------------
+	 	
+	 	Todas las filas excepto la ultima deben terminar con ';'.
+	 	
+2- Agregado:
+ Agregar el path del archivo al archivo listaTableros siguiendo la estructura presentada.
+	 

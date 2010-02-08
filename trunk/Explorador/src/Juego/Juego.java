@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import Tablero.CargadorTableros;
+import Tablero.SelectorTablerosAlAzar;
 import Tablero.Tablero;
 
 
@@ -69,8 +70,8 @@ public class Juego {
 
 	public void iniciar() {
 		estadoJuego= EstadoJuego.JUGANDO;
-		
-		try {
+		this.tablero=null;
+		/*try {
 			SeleccionarTablero("./recursos/tableros/1.txt");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -80,7 +81,8 @@ public class Juego {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}
+		}*/
+		tablero=SelectorTablerosAlAzar.elegirNuevo();
 		this.bombasExplotadas=0;
 		this.estrellasEncontradas=0;
 	}
